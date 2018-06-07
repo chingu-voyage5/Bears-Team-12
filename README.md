@@ -1,3 +1,4 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/chingu-voyage5/Bears-Team-12.png?columns=all)](https://waffle.io/chingu-voyage5/Bears-Team-12?utm_source=badge)
 # Bears-Team-12
 Ordering Application | Voyage-5 | chingu.io
 
