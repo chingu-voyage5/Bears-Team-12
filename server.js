@@ -1,10 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const orders = require('./routes/api/orders');
 
 const app = express();
 const mongoDB = 'mongodb://localhost/orderApp';
+
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Connect to MongoDB
 mongoose
