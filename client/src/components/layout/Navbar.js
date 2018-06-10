@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   render() {
     return (
       <nav>
-        <h1>This is a navbar!</h1>
+        <h5>This is a navbar!</h5>
         <ul>
           <li>
-            <a href="status.html">Status</a>
+            <Link to="/order">Order</Link>
           </li>
         </ul>
         <ul>
           <li>
-            <a href="settings.html">Settings</a>
+            <Link to="/settings">Settings</Link>
           </li>
         </ul>
       </nav>
