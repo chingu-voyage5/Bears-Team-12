@@ -12,7 +12,8 @@ router.get('/test', (req, res) =>
     meal1: 'pancakes!'
   })
 );
-
+// @route POST api/orders/order
+// @ desc add new order route
 router.post('/order', (req, res) => {
   const newOrder = new Order({
     meal1: req.body.meal1
