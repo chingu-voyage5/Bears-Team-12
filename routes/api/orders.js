@@ -5,13 +5,6 @@ const router = express.Router();
 // Load order model
 const Order = require('../../models/Order');
 
-// @route GET api/orders/test
-// @desc  Tests orders route
-router.get('/test', (req, res) =>
-  res.json({
-    meal1: 'pancakes!'
-  })
-);
 // @route POST api/orders/order
 // @ desc add new order route
 router.post('/order', (req, res) => {
