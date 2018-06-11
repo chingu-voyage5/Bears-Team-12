@@ -10,3 +10,17 @@ Ordering Application | Voyage-5 | chingu.io
 - [React Router](https://github.com/ReactTraining/react-router) - routing
 - [Express](https://expressjs.com/en/guide/routing.html) - web framework
 - [Bootstrap](https://getbootstrap.com/) / [React-Bootstrap](https://github.com/react-bootstrap/react-bootstrap) - component library
+
+Install server and client dependencies:
+
+- npm install
+- cd  client
+- npm install 
+
+Run mongo and app:
+- cd ..      // return to root folder
+- mongod
+- npm run dev
+
+The menu is initially blank.
+Add some items first to populate the menu and before creating an order!

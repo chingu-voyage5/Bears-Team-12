@@ -1,32 +1,21 @@
 {
-  "name": "order-app",
+  "name": "server",
   "version": "1.0.0",
-  "description": "Meal ordering and status tracking application",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client-install": "npm install --prefix client",
-    "client": "npm start --prefix client",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chingu-voyage5/Bears-Team-12.git"
-  },
   "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/chingu-voyage5/Bears-Team-12/issues"
-  },
-  "homepage": "https://github.com/chingu-voyage5/Bears-Team-12#readme",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "concurrently": "^3.5.1",
     "express": "^4.16.3",
-    "mongoose": "^5.1.4"
-  },
-  "devDependencies": {
+    "mongoose": "^5.1.4",
     "nodemon": "^1.17.5"
   }
 }
