@@ -1,0 +1,14 @@
+.menuItem { 
+  display: inline-block;
+  text-align: center;
+  border: 1px solid black; 
+  margin:5px;
+  padding: 10px;
+}
+
+.menuItem__quantity {
+  width:35px;
+  text-align: center;
+}
+
+
