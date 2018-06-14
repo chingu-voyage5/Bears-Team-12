@@ -4,7 +4,7 @@ Ordering Application | Voyage-5 | chingu.io
 **Tech Stack**
 
 - [Create React App](https://github.com/facebook/create-react-app) - app setup
-- [json-server](https://github.com/typicode/json-server) - data persistance
+- [Mongo DB](https://www.mongodb.com/) - database
 - [React](https://github.com/facebook/react/) - user interface
 - [React QR Code Library](https://thomasbilliet.com/react-qr-reader/) - QR code handling
 - [React Router](https://github.com/ReactTraining/react-router) - routing
