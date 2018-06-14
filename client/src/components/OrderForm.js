@@ -50,7 +50,7 @@ class OrderForm extends Component {
   renderItems() {
     return this.props.items.map(item => {
       return (
-        <div key={item.name} class='menuItem'>
+        <div key={item.name} className='menuItem'>
           <label>
             <button>Add</button>
             <div>{item.name}</div>
@@ -58,7 +58,7 @@ class OrderForm extends Component {
             <button>Delete</button>
             <br />
             <br />
-            <input class='menuItem__quantity'></input>
+            <input className='menuItem__quantity'></input>
           </label>
         </div>
       );
