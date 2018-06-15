@@ -33,26 +33,26 @@ app.get('/api/orders', async (req, res) => {
 });
 
 app.post('/api/orders', async (req, res) => {
-  const { name, notes, items } = req.body;
-  const newItems = [];
+  const { name, notes, order } = req.body;
+  const items = [];
 
-  for (const key in items) {
-    if (items[key].count > 0) {
-      newItems.push({ name: key, count: items[key].count });
+  for (const key in order) {
+    if (order[key].count > 0) {
+      items.push({ name: key, count: order[key].count });
     }
   }
 
   const newOrder = new Order({
     name,
+    items,
     notes: notes || null,
-    items: newItems,
     created: Date.now(),
     updated: Date.now()
   });
 
-  const order = await newOrder.save();
+  const savedNewOrder = await newOrder.save();
 
-  res.send(order);
+  res.send(savedNewOrder);
 });
 
 // Item routes
@@ -74,6 +74,15 @@ app.get('/api/items', async (req, res) => {
   const items = await Item.find({});
 
   res.send(items);
+});
+
+app.post('/api/items/:itemId', async (req, res) => {
+  const { newPrice } = req.body;
+  const { itemId } = req.params;
+
+  const newItem = await Item.findByIdAndUpdate(itemId, { price: newPrice });
+
+  res.send(newItem);
 });
 
 // PORT

@@ -27,8 +27,10 @@ class Orders extends Component {
       return (
         <div key={order._id}>
           <br />
-          {order.name} | {order.notes} | {order.status} | {order.table} |
-          {order.created} | {order.updated}
+          {order.name} | Notes: {order.notes || 'None'} | Stage: {order.status}{' '}
+          | {order.table} | Time created: {order.created} | Time updated:{
+            order.updated
+          }
           <br />
           <div>
             {order.items.map(item => {
