@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import Navbar from "./Navbar"
 import Landing from './Landing';
 import Menu from './Menu';
 import Orders from './Orders';
@@ -12,10 +13,13 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
+            <Navbar />
             <Route exact path="/" component={Landing} />
+            <div>
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/menu" component={Menu} />
             <Route path="/menu/new" component={ItemNew} />
+            </div>
           </div>
         </BrowserRouter>
       </div>

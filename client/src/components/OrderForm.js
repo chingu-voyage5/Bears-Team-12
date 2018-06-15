@@ -50,16 +50,15 @@ class OrderForm extends Component {
   renderItems() {
     return this.props.items.map(item => {
       return (
-        <div key={item.name}>
+        <div key={item.name} className='menuItem'>
           <label>
+            <button>Add</button>
             <div>{item.name}</div>
-            <div>{item.price}</div>
-            <input
-              name={item.name}
-              type="number"
-              onChange={this.handleInputChange}
-              min={0}
-            />
+            <div>$ {item.price}</div>
+            <button>Delete</button>
+            <br />
+            <br />
+            <input className='menuItem__quantity'></input>
           </label>
         </div>
       );
