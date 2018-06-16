@@ -7,7 +7,7 @@ class ItemForm extends Component {
     this.state = {
       name: '',
       price: '',
-      type: 'Adult',
+      type: 'adult',
       soup: false
     };
 
@@ -60,7 +60,7 @@ class ItemForm extends Component {
         <br />
         <label>
           Type:
-          <select value={this.state.value} onChange={this.handleInputChange}>
+          <select name="type" onChange={this.handleInputChange}>
             <option value="adult">Adult</option>
             <option value="children">Children</option>
             <option value="soup">Soup</option>

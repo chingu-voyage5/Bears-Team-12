@@ -12,6 +12,8 @@ class Navbar extends Component {
           <br />
           <a href="/menu/new">Add new item</a>
         </div>
+        <br />
+        <br />
       </nav>
     );
   }
