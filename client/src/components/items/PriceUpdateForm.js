@@ -30,15 +30,21 @@ class PriceUpdateForm extends Component {
     return (
       <div>
         <label>
-          New Price {this.props.item.name}:
+          New Price
+          <br />
+          <br />
           <input
             type="number"
             value={this.state.price}
             onChange={event => this.handleInputChange(event)}
           />
         </label>
+        <br />
+        <br />
         <button onClick={this.props.onCancel}>Cancel</button>
-        <button onClick={event => this.handleUpdate(event)}>Update!</button>
+        <button onClick={event => this.handleUpdate(event)}>
+          Update Price!
+        </button>
       </div>
     );
   }
