@@ -1,0 +1,30 @@
+// About SASS folder architecture:
+
+// The architecture for the project is based on the 7-in-1 Sass architecture
+// pattern. https://sass-guidelin.es/#the-7-1-pattern
+
+// I've left out the "vendors, themes, and pages folders for now".
+
+// This page is only for importing all other Sass pages. For now, I've just
+// added some of the 'typical' import files for now and we can add other files
+// as needed. In particular, note the "component" folder. Each React component
+// should have an equivalent file in that folder for writing its styles.
+
+// Also worth noting each HTML/JSX element should have a class name, for use
+// when referring to that element in CSS later on.
+
+// If you find yourself stuck, use this as a guide. http://getbem.com/naming/
+
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+@import 'base/animations';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/utilities';
+
+
+@import 'layout/footer';
+@import 'layout/header';
+@import 'layout/navigation';
