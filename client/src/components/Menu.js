@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MenuItem from './items/MenuItem';
+import OrderOverview from './orders/0rderOverview';
 
 class Menu extends Component {
   constructor(props) {
@@ -22,7 +23,17 @@ class Menu extends Component {
 
   async fetchMenuItems() {
     const res = await axios.get('/api/items');
-    this.setState({ menuItems: res.data });
+    this.setState({ menuItems: res.data }, () => {
+      this.state.menuItems.forEach(item => {
+        const itemFullName = `${item.name} (${item.type})`;
+        this.setState(
+          {
+            [itemFullName]: item.price
+          },
+          () => console.log(this.state)
+        );
+      });
+    });
   }
 
   handleInputChange(event) {
@@ -38,11 +49,14 @@ class Menu extends Component {
     } else {
       const newOrder = this.state.order;
 
-      newOrder[name] = { count: value };
+      newOrder[name] = { count: value, price: this.state[name] };
 
-      this.setState({
-        order: newOrder
-      });
+      this.setState(
+        {
+          order: newOrder
+        },
+        () => console.log(this.state)
+      );
     }
   }
 
@@ -79,33 +93,38 @@ class Menu extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            name="name"
-            type="text"
-            value={this.state.name}
-            onChange={this.handleInputChange}
-            required
-          />
-        </label>
-        <br />
-        {this.renderItems()}
-        <br />
-        <label>
-          Notes:
-          <input
-            name="notes"
-            type="text"
-            value={this.state.notes}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <br />
-        <br />
-        <input type="submit" value="Submit Order" />
-      </form>
+      <div className="menu">
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input
+              name="name"
+              type="text"
+              value={this.state.name}
+              onChange={this.handleInputChange}
+              required
+            />
+          </label>
+          <br />
+          {this.renderItems()}
+          <br />
+          <label>
+            Notes:
+            <input
+              name="notes"
+              type="text"
+              value={this.state.notes}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <br />
+          <div className="orderOverview">
+            <OrderOverview order={this.state.order} menuState={this.state} />
+            <input type="submit" value="Submit Order" className="submitBtn" />
+          </div>
+        </form>
+      </div>
     );
   }
 }

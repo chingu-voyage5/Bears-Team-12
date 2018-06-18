@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import Landing from './Landing';
 import Menu from './Menu';
-import Orders from './Orders';
+import Orders from './orders/Orders';
 import ItemNew from './items/ItemNew';
 
 class App extends Component {
