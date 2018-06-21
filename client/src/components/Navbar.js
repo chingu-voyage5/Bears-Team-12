@@ -4,16 +4,19 @@ import { Link } from 'react-router-dom';
 class Navbar extends Component {
   render() {
     return (
-      <nav>
-        <div>
-          <a href="/orders">View Orders</a>
-          <br />
-          <a href="/menu">View Menu</a>
-          <br />
-          <a href="/menu/new">Add new item</a>
-        </div>
-        <br />
-        <br />
+      <nav className="navbar">
+        <h2 className="navbar__logo">Feast</h2>
+        <ul className="navbar__list">
+          <li className="navbar__item">
+            <a className="navbar__link" href="/orders">Orders</a>
+          </li>
+          <li className="navbar__item">
+            <a href="/menu" className="navbar__link">Menu</a>
+          </li>
+          <li className="navbar__item">
+            <a href="/menu/new" className="navbar__link">Add Item</a>
+          </li>
+        </ul>
       </nav>
     );
   }
