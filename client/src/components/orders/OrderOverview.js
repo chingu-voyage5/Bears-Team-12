@@ -35,8 +35,15 @@ class OrderOverview extends Component {
       <div className="orderOverview">
         <h4 className="orderOverview__title">Order Overview</h4>
         {this.renderOrder()}
-        <p className="orderOverview__total">Total: ${total}</p>
-        <input type="submit" value="Submit Order" className="submitBtn" />
+        <summary className="orderOverview__summary">
+          <p className="orderOverview__total">Total</p>
+          <p className="orderOverview__total">${total}</p>
+          {/* TODO: Make this button a reusable component */}
+          <input
+            type="submit"
+            value="Submit Order"
+            className="orderOverview__btn" />
+        </summary>
       </div>
     );
   }
