@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MenuItem from './items/MenuItem';
-import OrderOverview from './orders/0rderOverview';
+import OrderOverview from './orders/OrderOverview';
 
 class Menu extends Component {
   constructor(props) {
@@ -119,10 +119,7 @@ class Menu extends Component {
           </label>
           <br />
           <br />
-          <div className="orderOverview">
-            <OrderOverview order={this.state.order} menuState={this.state} />
-            <input type="submit" value="Submit Order" className="submitBtn" />
-          </div>
+          <OrderOverview order={this.state.order} menuState={this.state} />
         </form>
       </div>
     );
