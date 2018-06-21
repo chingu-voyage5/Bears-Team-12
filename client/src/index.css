@@ -87,7 +87,8 @@ body {
   height: 70px;
   background-color: #00a1df;
   width: 100%;
-  padding: 0 10rem; }
+  padding: 0 10rem;
+  margin-bottom: 5rem; }
   .navbar__logo {
     font-size: 3rem;
     color: #fff; }
