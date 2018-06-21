@@ -36,6 +36,7 @@ class OrderOverview extends Component {
         <h4 className="orderOverview__title">Order Overview</h4>
         {this.renderOrder()}
         <p className="orderOverview__total">Total: ${total}</p>
+        <input type="submit" value="Submit Order" className="submitBtn" />
       </div>
     );
   }
