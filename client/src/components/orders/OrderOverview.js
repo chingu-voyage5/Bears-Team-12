@@ -32,10 +32,10 @@ class OrderOverview extends Component {
     }
 
     return (
-      <div>
-        <h4>Order Overview</h4>
+      <div className="orderOverview">
+        <h4 className="orderOverview__title">Order Overview</h4>
         {this.renderOrder()}
-        <div className="total">Total: ${total}</div>
+        <p className="orderOverview__total">Total: ${total}</p>
       </div>
     );
   }

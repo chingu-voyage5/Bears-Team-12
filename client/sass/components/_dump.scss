@@ -1,0 +1,43 @@
+// When I added SASS to the project, I needed a place to preserve the
+// styles that were already in the src/index.css. Here they are. Take
+// no offense to the name, I just didn't want to move the styles that
+// people had already written around too much.
+
+.menu {
+  width: 75%;
+}
+
+.menuItem {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid black;
+  margin:40px;
+  padding: 10px;
+}
+
+.menuItem__quantity {
+  width:35px;
+  text-align: center;
+}
+
+.orderOverview {
+  position: fixed;
+  right: 50px;
+  top: 135px;
+  border: 1px solid black;
+  width: 20%;
+  height: auto;
+  min-height: 100px;
+  padding: 20px 20px 140px 20px;
+  margin: 25px;
+}
+
+.submitBtn {
+  position: absolute;
+  bottom: 25px;
+}
+
+.total {
+  position: absolute;
+  bottom: 80px;
+}
