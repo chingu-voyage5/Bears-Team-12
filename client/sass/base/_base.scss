@@ -1,0 +1,20 @@
+// For now this is just a place for some browser resets. Note font-size: 62.5%
+// means that 1rem = 10px. This should make conversion easy and if there is a
+// need to add more responsive styles later on, should make it much easier
+// to change the global font-sizes, paddings, and margins at different
+// breakpoints.
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; // 1 rem = 10px
+  font-family: 'Cabin', sans-serif;
+}
+
+body {
+  box-sizing: inherit;
+}
