@@ -27,6 +27,19 @@
   margin: 25px;
 }
 
+.orderReceipt {
+  position: fixed;
+  right: 50px;
+  top: 400px;
+  
+  border: 1px solid black;
+  width: 20%;
+  height: auto;
+  min-height: 100px;
+  padding: 20px 20px 140px 20px;
+  margin: 25px;
+}
+
 .submitBtn {
   position: absolute;
   bottom: 25px;
