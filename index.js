@@ -55,6 +55,15 @@ app.post('/api/orders', async (req, res) => {
   res.send(savedNewOrder);
 });
 
+app.post('/api/orders/:orderId', async (req, res) => {
+  const { newStatus } = req.body;
+  const { orderId } = req.params;
+
+  const updatedOrder = await Item.findByIdAndUpdate(orderId, { status: newStatus });
+
+  res.send(updatedOrder);
+});
+
 // Item routes
 app.post('/api/items', async (req, res) => {
   const { name, price, type, soup } = req.body;
