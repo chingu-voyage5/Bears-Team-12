@@ -19,7 +19,7 @@ Install server and client dependencies:
 
 Run mongo and app:
 
-- Install mongo
+- Install MongoDB
   https://docs.mongodb.com/manual/administration/install-community/
 - cd ..      // return to root folder
 - mongod
