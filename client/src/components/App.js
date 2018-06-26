@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Landing from './Landing';
 import Menu from './Menu';
 import Orders from './orders/Orders';
+import OrderReceipt from './orders/OrderReceipt';
 import ItemNew from './items/ItemNew';
 
 class App extends Component {
@@ -17,6 +18,9 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <div>
               <Route exact path="/orders" component={Orders} />
+              <Route 
+                path="/orders/:id" 
+                component={OrderReceipt} />
               <Route exact path="/menu" component={Menu} />
               <Route path="/menu/new" component={ItemNew} />
             </div>
