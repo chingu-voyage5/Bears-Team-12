@@ -36,10 +36,6 @@ body {
   margin: 25px; }
 
 .orderReceipt {
-  position: fixed;
-  right: 50px;
-  top: 400px;
-  
   border: 1px solid black;
   width: 20%;
   height: auto;
