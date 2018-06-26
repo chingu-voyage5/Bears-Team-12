@@ -32,6 +32,13 @@ app.get('/api/orders', async (req, res) => {
   res.send(orders);
 });
 
+app.get('/api/orders/:orderId', async (req, res) => {
+  const { orderId } = req.params;
+  const order = await Order.findById(orderId);
+
+  res.send(order);
+});
+
 app.post('/api/orders', async (req, res) => {
   const { name, notes, order } = req.body;
   const items = [];
