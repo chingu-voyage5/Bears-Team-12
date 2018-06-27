@@ -1,4 +1,4 @@
-import { changeItemFormInput, types } from '../actions/ItemForm'
+import { types } from '../actions/ItemForm'
 
 const initialState = {
   name: '',

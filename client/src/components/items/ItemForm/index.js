@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { withHandlers, compose } from 'recompose'
+import axios from 'axios';
 
 import ItemForm from './ItemForm'
 import { changeItemFormInput } from '../../../actions/ItemForm'
@@ -19,4 +21,12 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemForm)
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withHandlers({
+    handleSubmit: props => async (event) => {
+      const { name, price, type } = props
+      axios.post('/api/items', { name, price, type })
+    }
+  }),
+)(ItemForm)
