@@ -4,36 +4,16 @@ import axios from 'axios';
 class ItemForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      price: '',
-      type: 'adult',
-      soup: false
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
   async handleSubmit(event) {
-    axios.post('/api/items', {
-      name: this.state.name,
-      price: this.state.price,
-      type: this.state.type
-    });
+    const {name, price, type} = this.props
+    axios.post('/api/items', { name, price, type });
   }
 
   render() {
+    const { name, price, type, soup, handleInputChange } = this.props
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -41,8 +21,8 @@ class ItemForm extends Component {
           <input
             name="name"
             type="text"
-            value={this.state.name}
-            onChange={this.handleInputChange}
+            value={name}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -52,15 +32,15 @@ class ItemForm extends Component {
           <input
             name="price"
             type="number"
-            value={this.state.price}
-            onChange={this.handleInputChange}
+            value={price}
+            onChange={handleInputChange}
             required
           />
         </label>
         <br />
         <label>
           Type:
-          <select name="type" onChange={this.handleInputChange}>
+          <select name="type" onChange={handleInputChange}>
             <option value="adult">Adult</option>
             <option value="children">Children</option>
             <option value="soup">Soup</option>

@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
+import { ItemFormReducer } from './ItemForm'
 
 export default combineReducers({
-  test: () => ({ lol: 'lol' })
+  ItemFormReducer
 });
