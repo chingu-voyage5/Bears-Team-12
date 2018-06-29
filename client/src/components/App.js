@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
-import Navbar from './Navbar';
-import Landing from './Landing';
-import Menu from './Menu';
-import Orders from './orders/Orders';
-import ItemNew from './items/ItemNew';
+import Navbar from "./Navbar";
+import Landing from "./Landing";
+import Menu from "./Menu";
+import Orders from "./orders/Orders";
+import ItemNew from "./items/ItemNew";
 
 class App extends Component {
   render() {
