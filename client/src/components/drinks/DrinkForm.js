@@ -57,6 +57,7 @@ class DrinkForm extends Component {
             name="price"
             type="number"
             value={this.state.price}
+            min={0}
             onChange={this.handleInputChange}
             required
           />

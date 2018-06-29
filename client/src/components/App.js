@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-<<<<<<< HEAD
 import Navbar from './Navbar';
 import Landing from './Landing';
 import Menu from './Menu';
@@ -9,13 +8,6 @@ import Orders from './orders/Orders';
 import ItemNew from './items/ItemNew';
 import DrinksMenu from './drinks/DrinksMenu';
 import DrinkForm from './drinks/DrinkForm';
-=======
-import Navbar from "./Navbar";
-import Landing from "./Landing";
-import Menu from "./Menu";
-import Orders from "./orders/Orders";
-import ItemNew from "./items/ItemNew";
->>>>>>> dev
 
 class App extends Component {
   render() {
