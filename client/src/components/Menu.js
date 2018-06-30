@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MenuItem from './items/MenuItem';
-import OrderOverview from './orders/0rderOverview';
+import OrderOverview from './orders/OrderOverview';
+import OrderReceipt from './orders/OrderReceipt';
 
 class Menu extends Component {
   constructor(props) {
@@ -121,20 +122,12 @@ class Menu extends Component {
           </label>
           <br />
           <br />
-          <div className="orderOverview">
-            <OrderOverview order={this.state.order} menuState={this.state} />
-            <input type="submit" value="Submit Order" className="submitBtn" />
+          <OrderOverview order={this.state.order} menuState={this.state} />
             {this.state.previousOrder._id && 
               <a href={'/orders/' + this.state.previousOrder._id }>
                 <h2>Print Receipt for {this.state.previousOrder.name}'s Order</h2>
               </a>
             }
-          </div>
-          {this.state.previousOrder._id && (
-            <div className="orderReceipt">
-              <OrderReceipt order={this.state.previousOrder} />
-            </div>
-          )}
         </form>
       </div>
     );

@@ -24,6 +24,10 @@ body {
   width: 35px;
   text-align: center; }
 
+.submitBtn {
+  position: absolute;
+  bottom: 25px; }
+
 .total {
   position: absolute;
   bottom: 80px; }
@@ -66,7 +70,7 @@ body {
     cursor: pointer; }
 
 .orderOverview {
-  width: 35rem;
+  width: 30rem;
   height: 70rem;
   display: flex;
   flex-direction: column;
@@ -75,39 +79,6 @@ body {
   margin: 2.5rem;
   border: 2px solid #00a1df;
   border-radius: 3px; }
-  .orderOverview__title {
-    font-size: 2.5rem;
-    color: #333; }
-  .orderOverview__summary {
-    height: 10rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; }
-  .orderOverview__total {
-    display: flex;
-    justify-content: space-between;
-    font-size: 2rem;
-    color: #555; }
-  .orderOverview__btn {
-    padding: 1.5rem;
-    background-color: #00a1df;
-    flex-basis: 100%;
-    font-size: 1.6rem;
-    font-weight: 600;
-    letter-spacing: .2rem;
-    text-transform: uppercase;
-    color: #fff;
-    border: none;
-    border-radius: 3px; }
-
-.orderReceipt {
-      border: 1px solid black;
-      width: 20%;
-      height: auto;
-      min-height: 100px;
-      padding: 20px 20px 140px 20px;
-      margin: 25px;
-    }    
 
 .navbar {
   display: flex;
