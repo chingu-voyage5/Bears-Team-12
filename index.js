@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 // Schema
 require('./models/Order');
 require('./models/Item');
+require('./models/Drink');
 
 // MongoDB connection
 mongoose.connect('mongodb://localhost/feast');
@@ -16,6 +17,7 @@ mongoose.connection
 
 const Order = mongoose.model('orders');
 const Item = mongoose.model('items');
+const Drink = mongoose.model('drinks');
 
 const app = express();
 app.use(bodyParser.json());
@@ -66,12 +68,20 @@ app.post('/api/orders/:orderId', async (req, res) => {
   const { newStatus } = req.body;
   const { orderId } = req.params;
 
-  const updatedOrder = await Item.findByIdAndUpdate(orderId, { status: newStatus });
+  const updatedOrder = await Item.findByIdAndUpdate(orderId, {
+    status: newStatus
+  });
 
   res.send(updatedOrder);
 });
 
 // Item routes
+app.get('/api/items', async (req, res) => {
+  const items = await Item.find({});
+
+  res.send(items);
+});
+
 app.post('/api/items', async (req, res) => {
   const { name, price, type, soup } = req.body;
 
@@ -86,12 +96,6 @@ app.post('/api/items', async (req, res) => {
   res.send(item);
 });
 
-app.get('/api/items', async (req, res) => {
-  const items = await Item.find({});
-
-  res.send(items);
-});
-
 app.post('/api/items/:itemId', async (req, res) => {
   const { newPrice } = req.body;
   const { itemId } = req.params;
@@ -101,5 +105,24 @@ app.post('/api/items/:itemId', async (req, res) => {
   res.send(newItem);
 });
 
+// Drinks routes
+app.get('/api/drinks', async (req, res) => {
+  const drinks = await Drink.find({});
+
+  res.send(drinks);
+});
+
+app.post('/api/drinks', async (req, res) => {
+  const { name, price } = req.body;
+
+  const drink = new Drink({
+    name,
+    price
+  });
+
+  const newDrink = await drink.save();
+  res.send(newDrink);
+});
+
 // PORT
-app.listen(5000);
+app.listen(5000, () => console.log('Listening on port 5000'));

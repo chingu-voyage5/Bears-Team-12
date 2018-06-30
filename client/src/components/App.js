@@ -7,6 +7,8 @@ import Menu from './Menu';
 import Orders from './orders/Orders';
 import OrderReceipt from './orders/OrderReceipt';
 import ItemNew from './items/ItemNew';
+import DrinksMenu from './drinks/DrinksMenu';
+import DrinkForm from './drinks/DrinkForm';
 
 class App extends Component {
   render() {
@@ -23,6 +25,8 @@ class App extends Component {
                 component={OrderReceipt} />
               <Route exact path="/menu" component={Menu} />
               <Route path="/menu/new" component={ItemNew} />
+              <Route exact path="/drinks" component={DrinksMenu} />
+              <Route exact path="/drinks/new" component={DrinkForm} />
             </div>
           </div>
         </BrowserRouter>

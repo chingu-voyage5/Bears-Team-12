@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-class ItemForm extends Component {
+class DrinkForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      price: '',
-      type: 'adult',
-      soup: false
+      price: 0
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -25,12 +24,16 @@ class ItemForm extends Component {
     });
   }
 
-  async handleSubmit(event) {
-    axios.post('/api/items', {
-      name: this.state.name,
-      price: this.state.price,
-      type: this.state.type
-    });
+  handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post('/api/drinks', {
+        name: this.state.name,
+        price: this.state.price
+      })
+      .then(() => {
+        this.props.history.push('/drinks');
+      });
   }
 
   render() {
@@ -47,25 +50,19 @@ class ItemForm extends Component {
           />
         </label>
         <br />
+        <br />
         <label>
           Price:
           <input
             name="price"
             type="number"
             value={this.state.price}
+            min={0}
             onChange={this.handleInputChange}
             required
           />
         </label>
         <br />
-        <label>
-          Type:
-          <select name="type" onChange={this.handleInputChange}>
-            <option value="adult">Adult</option>
-            <option value="children">Children</option>
-            <option value="soup">Soup</option>
-          </select>
-        </label>
         <br />
         <input type="submit" value="Submit" />
       </form>
@@ -73,4 +70,4 @@ class ItemForm extends Component {
   }
 }
 
-export default ItemForm;
+export default withRouter(DrinkForm);

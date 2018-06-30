@@ -69,7 +69,7 @@ class Menu extends Component {
         notes: this.state.notes,
         order: this.state.order
       })
-      .then((response) => {
+      .then(response => {
         // Controlled component - reset form values
         this.setState({
           name: '',
@@ -130,6 +130,11 @@ class Menu extends Component {
               </a>
             }
           </div>
+          {this.state.previousOrder._id && (
+            <div className="orderReceipt">
+              <OrderReceipt order={this.state.previousOrder} />
+            </div>
+          )}
         </form>
       </div>
     );
