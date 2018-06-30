@@ -1,11 +1,13 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import Navbar from "./Navbar";
-import Landing from "./Landing";
-import Menu from "./Menu";
-import Orders from "./orders/Orders";
-import ItemNew from "./items/ItemNew";
+import Navbar from './Navbar';
+import Landing from './Landing';
+import Menu from './Menu';
+import Orders from './orders/Orders';
+import ItemNew from './items/ItemNew';
+import DrinksMenu from './drinks/DrinksMenu';
+import DrinkForm from './drinks/DrinkForm';
 
 class App extends Component {
   render() {
@@ -19,6 +21,8 @@ class App extends Component {
               <Route exact path="/orders" component={Orders} />
               <Route exact path="/menu" component={Menu} />
               <Route path="/menu/new" component={ItemNew} />
+              <Route exact path="/drinks" component={DrinksMenu} />
+              <Route exact path="/drinks/new" component={DrinkForm} />
             </div>
           </div>
         </BrowserRouter>

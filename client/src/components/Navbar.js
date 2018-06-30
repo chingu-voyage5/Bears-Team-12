@@ -8,13 +8,24 @@ class Navbar extends Component {
         <h2 className="navbar__logo">Feast</h2>
         <ul className="navbar__list">
           <li className="navbar__item">
-            <a className="navbar__link" href="/orders">Orders</a>
+            <a className="navbar__link" href="/orders">
+              Orders
+            </a>
           </li>
           <li className="navbar__item">
-            <a href="/menu" className="navbar__link">Menu</a>
+            <a href="/menu" className="navbar__link">
+              Menu
+            </a>
           </li>
           <li className="navbar__item">
-            <a href="/menu/new" className="navbar__link">Add Item</a>
+            <a href="/menu/new" className="navbar__link">
+              Add Item
+            </a>
+          </li>
+          <li className="navbar__item">
+            <a href="/drinks" className="navbar__link">
+              Drinks
+            </a>
           </li>
         </ul>
       </nav>
