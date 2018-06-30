@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import MenuItem from './items/MenuItem';
 import OrderOverview from './orders/OrderOverview';
+import OrderReceipt from './orders/OrderReceipt';
 
 class Menu extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class Menu extends Component {
       menuItems: [],
       name: '',
       order: {},
-      notes: ''
+      notes: '',
+      previousOrder: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -68,12 +70,13 @@ class Menu extends Component {
         notes: this.state.notes,
         order: this.state.order
       })
-      .then(() => {
+      .then(response => {
         // Controlled component - reset form values
         this.setState({
           name: '',
           order: {},
-          notes: ''
+          notes: '',
+          previousOrder: response.data
         });
       });
   }
@@ -120,6 +123,11 @@ class Menu extends Component {
           <br />
           <br />
           <OrderOverview order={this.state.order} menuState={this.state} />
+          {this.state.previousOrder._id && (
+            <div className="orderReceipt">
+              <OrderReceipt order={this.state.previousOrder} />
+            </div>
+          )}
         </form>
       </div>
     );

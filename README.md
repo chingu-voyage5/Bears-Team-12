@@ -18,6 +18,9 @@ Install server and client dependencies:
 - npm install 
 
 Run mongo and app:
+
+- Install MongoDB
+  https://docs.mongodb.com/manual/administration/install-community/
 - cd ..      // return to root folder
 - mongod
 - npm run dev

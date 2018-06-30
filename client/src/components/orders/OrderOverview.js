@@ -17,6 +17,7 @@ class OrderOverview extends Component {
           </div>
         );
       }
+      return;
     });
   }
 
