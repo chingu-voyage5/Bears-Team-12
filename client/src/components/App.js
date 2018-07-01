@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Navbar from './Navbar';
 import Landing from './Landing';
@@ -12,25 +12,39 @@ import DrinkForm from './drinks/DrinkForm';
 
 class App extends Component {
   render() {
-    return (
+    const ReceiptContainer = () => (
+      <Route 
+        path="/orders/:id" 
+        component={OrderReceipt} />
+    );
+
+    const DefaultContainer = () => (
       <div>
+        <Navbar />
+        <Route exact path="/" component={Landing} />
+        <div>
+          <Route exact path="/orders" component={Orders} />
+          <Route exact path="/menu" component={Menu} />
+          <Route path="/menu/new" component={ItemNew} />
+          <Route exact path="/drinks" component={DrinksMenu} />
+          <Route exact path="/drinks/new" component={DrinkForm} />
+        </div>
+      </div>
+    )
+
+    return (
+      
         <BrowserRouter>
-          <div>
-            <Navbar />
-            <Route exact path="/" component={Landing} />
-            <div>
-              <Route exact path="/orders" component={Orders} />
+          <Switch>
+            
               <Route 
                 path="/orders/:id" 
                 component={OrderReceipt} />
-              <Route exact path="/menu" component={Menu} />
-              <Route path="/menu/new" component={ItemNew} />
-              <Route exact path="/drinks" component={DrinksMenu} />
-              <Route exact path="/drinks/new" component={DrinkForm} />
-            </div>
-          </div>
+              <Route component={DefaultContainer}/>
+            
+          </Switch>
         </BrowserRouter>
-      </div>
+      
     );
   }
 }

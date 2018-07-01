@@ -44,6 +44,7 @@ class OrderReceipt extends Component {
           </div>
           <QRCode value={this.state.updateOrderStatusURL} />
           <div>Order Id: {this.state.order._id}</div>
+          <a href="/menu">Start new order...</a>
       </div>
     );
   }
