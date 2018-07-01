@@ -47,7 +47,7 @@ app.post('/api/orders', async (req, res) => {
 
   for (const key in order) {
     if (order[key].count > 0) {
-      items.push({ name: key, count: order[key].count });
+      items.push({ name: key, count: order[key].count, price: order[key].price });
     }
   }
 

@@ -36,7 +36,7 @@ class Orders extends Component {
             {order.items.map(item => {
               return (
                 <div key={item[0].name + item[0].count}>
-                  {item[0].name} X {item[0].count}
+                  {item[0].name}: {item[0].count} X {item[0].price} = {item[0].count * item[0].price}
                 </div>
               );
             })}

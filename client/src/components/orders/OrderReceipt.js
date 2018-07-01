@@ -7,6 +7,7 @@ class OrderReceipt extends Component {
     super(props);
     this.state = {
       order: {},
+      total: 0,
       updateOrderStatusURL: '/api/orders/' + this.props.match.params.id
     };
   }
@@ -18,16 +19,19 @@ class OrderReceipt extends Component {
   async fetchOrder() {
     const res = await axios.get('/api/orders/' + this.props.match.params.id);
     this.setState({
-      order: res.data
+      order: res.data,
+      total: res.data.items
+              .map(item => item[0].price * item[0].count)
+              .reduce((prev, next) => prev + next)
     });
-    console.log('Fetching order', this.props.match.params.id);
-    console.log('Order Details', this.state.order);
   }
 
   render() {
     return (
       <div className="orderOverview">
           <h4 className="orderOverview__title">Order Receipt</h4>
+          <QRCode value={this.state.updateOrderStatusURL} />
+          <div>Order Id: {this.state.order._id}</div>
           <div>Order Name: {this.state.order.name}</div>
           <div>Order Table: {this.state.order.table}</div>
           <div>Order Status: {this.state.order.status}</div>
@@ -37,14 +41,16 @@ class OrderReceipt extends Component {
             this.state.order.items.map(item => {
               return ( 
                 <div key={item[0].name + item[0].count}>
-                  {item[0].name} X {item[0].count}
+                  {item[0].name}: {item[0].count} X {item[0].price} = {item[0].count * item[0].price}
                 </div>
               );
             })}
+            <summary className="orderOverview__summary">
+              <p className="orderOverview__total">Total</p>
+              <p className="orderOverview__total">${this.state.total}</p>
+            </summary>
+            <a href="/menu">Start new order...</a>
           </div>
-          <QRCode value={this.state.updateOrderStatusURL} />
-          <div>Order Id: {this.state.order._id}</div>
-          <a href="/menu">Start new order...</a>
       </div>
     );
   }
