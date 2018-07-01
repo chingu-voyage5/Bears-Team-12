@@ -12,12 +12,6 @@ import DrinkForm from './drinks/DrinkForm';
 
 class App extends Component {
   render() {
-    const ReceiptContainer = () => (
-      <Route 
-        path="/orders/:id" 
-        component={OrderReceipt} />
-    );
-
     const DefaultContainer = () => (
       <div>
         <Navbar />
