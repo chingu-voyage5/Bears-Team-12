@@ -3,6 +3,7 @@ import axios from 'axios';
 import MenuItem from './items/MenuItem';
 import OrderOverview from './orders/OrderOverview';
 import OrderReceipt from './orders/OrderReceipt';
+import Redirect from 'react-router-dom/Redirect';
 
 class Menu extends Component {
   constructor(props) {
@@ -95,6 +96,10 @@ class Menu extends Component {
   }
 
   render() {
+    if (this.state.previousOrder._id) {
+      return <Redirect to={ '/orders/' + this.state.previousOrder._id } />
+    }
+
     return (
       <div className="menu">
         <form onSubmit={this.handleSubmit}>
@@ -123,11 +128,6 @@ class Menu extends Component {
           <br />
           <br />
           <OrderOverview order={this.state.order} menuState={this.state} />
-            {this.state.previousOrder._id && 
-              <a href={'/orders/' + this.state.previousOrder._id }>
-                <h2>Print Receipt for {this.state.previousOrder.name}'s Order</h2>
-              </a>
-            }
         </form>
       </div>
     );
