@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import MenuItem from './items/MenuItem';
 import OrderOverview from './orders/OrderOverview';
-import OrderReceipt from './orders/OrderReceipt';
 import Redirect from 'react-router-dom/Redirect';
 
 class Menu extends Component {
