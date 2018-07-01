@@ -100,15 +100,6 @@ body {
     border: none;
     border-radius: 3px; }
 
-.orderReceipt {
-      border: 1px solid black;
-      width: 20%;
-      height: auto;
-      min-height: 100px;
-      padding: 20px 20px 140px 20px;
-      margin: 25px;
-    }    
-
 .navbar {
   display: flex;
   justify-content: space-between;
