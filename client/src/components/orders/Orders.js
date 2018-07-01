@@ -27,10 +27,10 @@ class Orders extends Component {
       return (
         <div key={order._id}>
           <br />
-          {order.name} | Notes: {order.notes || 'None'} | Stage: {order.status}{' '}
-          | {order.table} | Time created: {order.created} | Time updated:{
-            order.updated
-          }
+          <a href= {"/orders/" + order._id } >Receipt</a> | {order.name} | Notes: {order.notes || 'None'} | Stage: {order.status}{' '}
+          | {order.table} | Time created: {order.created} | Time updated:
+          {order.updated}
+          
           <br />
           <div>
             {order.items.map(item => {
