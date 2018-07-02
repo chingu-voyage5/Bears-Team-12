@@ -1,3 +1,5 @@
+// TODO: change a tags to links
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
