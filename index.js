@@ -34,13 +34,20 @@ app.get('/api/orders', async (req, res) => {
   res.send(orders);
 });
 
+app.get('/api/orders/:orderId', async (req, res) => {
+  const { orderId } = req.params;
+  const order = await Order.findById(orderId);
+
+  res.send(order);
+});
+
 app.post('/api/orders', async (req, res) => {
   const { name, notes, order } = req.body;
   const items = [];
 
   for (const key in order) {
     if (order[key].count > 0) {
-      items.push({ name: key, count: order[key].count });
+      items.push({ name: key, count: order[key].count, price: order[key].price });
     }
   }
 

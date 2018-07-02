@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import MenuItem from './items/MenuItem';
 import OrderOverview from './orders/OrderOverview';
-import OrderReceipt from './orders/OrderReceipt';
+import Redirect from 'react-router-dom/Redirect';
 
 // This Component is named to correspond to the "Menu" link on the
 // navbar. It should render all menu items and the orderOverview component
@@ -117,6 +117,10 @@ class Menu extends Component {
   // foodMenu should take up whatever is left after Order Overview renders
   // OrderOverview should take up 350px or 35rem
   render() {
+    if (this.state.previousOrder._id) {
+      return <Redirect to={ '/orders/' + this.state.previousOrder._id } />
+    }
+
     return (
       <div className="mainMenu">
         {this.renderItems()}
