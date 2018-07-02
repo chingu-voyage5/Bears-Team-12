@@ -16,8 +16,9 @@ class OrderOverview extends Component {
             <br />
           </div>
         );
+      } else {
+        return;
       }
-      return;
     });
   }
 
@@ -40,10 +41,7 @@ class OrderOverview extends Component {
           <p className="orderOverview__total">Total</p>
           <p className="orderOverview__total">${total}</p>
           {/* TODO: Make this button a reusable component */}
-          <input
-            type="submit"
-            value="Submit Order"
-            className="orderOverview__btn" />
+          <input type="submit" value="Submit Order" className="orderOverview__btn" />
         </summary>
       </div>
     );
@@ -51,3 +49,38 @@ class OrderOverview extends Component {
 }
 
 export default OrderOverview;
+
+// starting point for Name and Notes inputs that were previously in the Menu
+// component
+
+{
+  /* <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input
+              name="name"
+              type="text"
+              value={this.state.name}
+              onChange={this.handleInputChange}
+              required
+            />
+          </label>
+          <br /> */
+}
+{
+  /* <br />
+          <label>
+            Notes:
+            <input
+              name="notes"
+              type="text"
+              value={this.state.notes}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <br /> */
+}
+{
+  /* </form> */
+}

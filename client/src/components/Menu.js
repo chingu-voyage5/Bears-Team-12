@@ -1,18 +1,27 @@
+// Component changelog: remove the name input and notes input from
+// this component
+
+// TODO: Place name and Notes inputs in the OrderOverview component
+// and style
+
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import MenuItem from './items/MenuItem';
 import OrderOverview from './orders/OrderOverview';
 import OrderReceipt from './orders/OrderReceipt';
 
+// This Component is named to correspond to the "Menu" link on the
+// navbar. It should render all menu items and the orderOverview component
 class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuItems: [],
-      name: '',
-      order: {},
-      notes: '',
-      previousOrder: ''
+      menuItems: [], // Lifted into Redux store
+      name: '', // don't need
+      order: {}, // lift into Redux store
+      notes: '', // Move into OrderOverview
+      previousOrder: '' // ???
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -81,57 +90,50 @@ class Menu extends Component {
       });
   }
 
+  // This method renders a large portion of the page. It consults the store's
+  // Menu array, and creates a MenuItem for each object in the array. It then
+  // places all of those MenuItems inside of a div with className "foodMenu",
+  // which will take up about 75% of the screen and be rendered along side the
+  // OrderOverview component.
   renderItems() {
-    return this.state.menuItems.map(item => {
-      return (
-        <MenuItem
-          key={item.name + item.type}
-          item={item}
-          handleInputChange={this.handleInputChange}
-          menuState={this.state}
-        />
-      );
-    });
+    return (
+      <div className="foodMenu">
+        {this.props.menu.map(item => {
+          return (
+            <MenuItem
+              key={item.name + item.type}
+              item={item.name}
+              price={item.price}
+              // handleInputChange={this.handleInputChange}
+              // menuState={this.state}
+            />
+          );
+        })}
+      </div>
+    );
   }
 
+  // Render foodMenu and OrderOverview
+  // foodMenu should take up whatever is left after Order Overview renders
+  // OrderOverview should take up 350px or 35rem
   render() {
     return (
-      <div className="menu">
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input
-              name="name"
-              type="text"
-              value={this.state.name}
-              onChange={this.handleInputChange}
-              required
-            />
-          </label>
-          <br />
-          {this.renderItems()}
-          <br />
-          <label>
-            Notes:
-            <input
-              name="notes"
-              type="text"
-              value={this.state.notes}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <br />
-          <OrderOverview order={this.state.order} menuState={this.state} />
-          {this.state.previousOrder._id && (
-            <div className="orderReceipt">
-              <OrderReceipt order={this.state.previousOrder} />
-            </div>
-          )}
-        </form>
+      <div className="mainMenu">
+        {this.renderItems()}
+        <OrderOverview order={this.state.order} menuState={this.state} />
+
+        {this.state.previousOrder._id && (
+          <div className="orderReceipt">
+            <OrderReceipt order={this.state.previousOrder} />
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default Menu;
+const mapStateToProps = state => {
+  return { menu: state.MenuReducer };
+};
+
+export default connect(mapStateToProps)(Menu);
