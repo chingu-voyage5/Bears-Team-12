@@ -7,13 +7,12 @@
     width: 32rem;
     height: 35rem;
     padding: 1rem;
-    border: 1px solid $color-primary;
-    border-radius: .3rem;
-    margin: 3px auto;
+    border: 2px solid $color-primary;
+    border-radius: 0.3rem;
     &--img {
       width: 30rem;
       height: 25rem;
-      border-radius: .3rem;
+      border-radius: 0.3rem;
     }
     &--name {
       font-size: 2.5rem;

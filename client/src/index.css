@@ -36,13 +36,12 @@ body {
   width: 32rem;
   height: 35rem;
   padding: 1rem;
-  border: 1px solid #00a1df;
-  border-radius: .3rem;
-  margin: 3px auto; }
+  border: 2px solid #00a1df;
+  border-radius: 0.3rem; }
   .menu__item--img {
     width: 30rem;
     height: 25rem;
-    border-radius: .3rem; }
+    border-radius: 0.3rem; }
   .menu__item--name {
     font-size: 2.5rem;
     color: #444;
@@ -67,7 +66,7 @@ body {
 
 .orderOverview {
   width: 35rem;
-  height: 70rem;
+  height: 75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,7 +93,7 @@ body {
     flex-basis: 100%;
     font-size: 1.6rem;
     font-weight: 600;
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
     text-transform: uppercase;
     color: #fff;
     border: none;
@@ -137,3 +136,14 @@ body {
   .navbar__link:hover {
     padding-bottom: .3rem;
     border-bottom: 3px solid #fff; }
+
+.mainMenu {
+  display: flex; }
+
+.foodMenu {
+  display: grid;
+  width: 120rem;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+  margin: 3rem 0 0 3rem; }

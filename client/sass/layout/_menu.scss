@@ -1,0 +1,16 @@
+// This describes the overall layout for the Menu page. The entire page
+// (mainMenu) is composed of the foodMenu and the orderOverview
+// component.
+
+.mainMenu {
+  display: flex;
+}
+
+.foodMenu {
+  display: grid;
+  width: 120rem;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+  margin: 3rem 0 0 3rem;
+}
