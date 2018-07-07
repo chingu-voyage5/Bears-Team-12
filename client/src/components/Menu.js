@@ -125,12 +125,6 @@ class Menu extends Component {
       <div className="mainMenu">
         {this.renderItems()}
         <OrderOverview order={this.state.order} menuState={this.state} />
-
-        {this.state.previousOrder._id && (
-          <div className="orderReceipt">
-            <OrderReceipt order={this.state.previousOrder} />
-          </div>
-        )}
       </div>
     );
   }
