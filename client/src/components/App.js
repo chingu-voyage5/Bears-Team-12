@@ -6,6 +6,7 @@ import Landing from './Landing';
 import Menu from './Menu';
 import Orders from './orders/Orders';
 import OrderReceipt from './orders/OrderReceipt';
+import OrderScanner from './orders/OrderScanner';
 import ItemNew from './items/ItemNew';
 import DrinksMenu from './drinks/DrinksMenu';
 import DrinkForm from './drinks/DrinkForm';
@@ -17,6 +18,7 @@ class App extends Component {
         <Navbar />
         <Route exact path="/" component={Landing} />
         <div>
+          <Route exact path="/scanner" component={OrderScanner} />
           <Route exact path="/orders" component={Orders} />
           <Route exact path="/menu" component={Menu} />
           <Route path="/menu/new" component={ItemNew} />

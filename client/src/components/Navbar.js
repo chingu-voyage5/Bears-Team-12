@@ -10,6 +10,11 @@ class Navbar extends Component {
         <h2 className="navbar__logo">Feast</h2>
         <ul className="navbar__list">
           <li className="navbar__item">
+            <a className="navbar__link" href="/scanner">
+              Scan QR Code
+            </a>
+          </li>
+          <li className="navbar__item">
             <a className="navbar__link" href="/orders">
               Orders
             </a>
