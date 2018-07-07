@@ -7,8 +7,7 @@ class OrderReceipt extends Component {
     super(props);
     this.state = {
       order: {},
-      total: 0,
-      updateOrderStatusURL: '/api/orders/' + this.props.match.params.id
+      total: 0
     };
   }
 
@@ -30,7 +29,7 @@ class OrderReceipt extends Component {
     return (
       <div className="orderOverview">
           <h4 className="orderOverview__title">Order Receipt</h4>
-          <QRCode value={this.state.updateOrderStatusURL} />
+          <QRCode value={this.props.match.params.id} />
           <div>Order Id: {this.state.order._id}</div>
           <div>Order Name: {this.state.order.name}</div>
           <div>Order Table: {this.state.order.table}</div>
