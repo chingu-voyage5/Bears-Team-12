@@ -28,12 +28,9 @@ class Menu extends Component {
     this.setState({ menuItems: res.data }, () => {
       this.state.menuItems.forEach(item => {
         const itemFullName = `${item.name} (${item.type})`;
-        this.setState(
-          {
-            [itemFullName]: item.price
-          },
-          () => console.log(this.state)
-        );
+        this.setState({
+          [itemFullName]: item.price
+        });
       });
     });
   }
@@ -51,14 +48,11 @@ class Menu extends Component {
     } else {
       const newOrder = this.state.order;
 
-      newOrder[name] = { count: value, price: this.state[name] };
+      newOrder[name] = { count: parseFloat(value), price: this.state[name] };
 
-      this.setState(
-        {
-          order: newOrder
-        },
-        () => console.log(this.state)
-      );
+      this.setState({
+        order: newOrder
+      });
     }
   }
 
@@ -96,7 +90,7 @@ class Menu extends Component {
 
   render() {
     if (this.state.previousOrder._id) {
-      return <Redirect to={ '/orders/' + this.state.previousOrder._id } />
+      return <Redirect to={'/orders/' + this.state.previousOrder._id} />;
     }
 
     return (

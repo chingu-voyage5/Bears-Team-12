@@ -27,6 +27,11 @@ class Navbar extends Component {
               Drinks
             </a>
           </li>
+          <li className="navbar__item">
+            <a href="/statistics" className="navbar__link">
+              Statistics
+            </a>
+          </li>
         </ul>
       </nav>
     );
