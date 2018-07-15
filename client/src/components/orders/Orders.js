@@ -37,7 +37,7 @@ class Orders extends Component {
           {order.notes || 'None'} | Stage: {order.status} | {order.table} | Time
           created: {order.created} | Time updated:
           {order.updated} |{' '}
-          <button onClick={() => this.handleProgressUpdate(order._id)}>
+          <button disabled={order.status == '4'} onClick={() => this.handleProgressUpdate(order._id)}>
             Update Progress
           </button>
           <br />

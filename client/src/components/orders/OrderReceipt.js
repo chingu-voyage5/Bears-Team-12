@@ -25,6 +25,18 @@ class OrderReceipt extends Component {
     });
   }
 
+  handleProgressUpdate(orderId) {
+    axios
+      .put(`/api/orders/${orderId}`, {
+        method: 'clicked'
+      })
+      .then(res => {
+          this.setState({
+            order: res.data
+          });
+      });
+  }
+
   render() {
     return (
       <div className="orderOverview">
@@ -34,6 +46,9 @@ class OrderReceipt extends Component {
           <div>Order Name: {this.state.order.name}</div>
           <div>Order Table: {this.state.order.table}</div>
           <div>Order Status: {this.state.order.status}</div>
+          <button disabled={this.state.order.status == '4'} onClick={() => this.handleProgressUpdate(this.props.match.params.id)}>
+            Update Progress
+          </button>
           <div>Order Notes: {this.state.order.notes}</div>
           <div>
             {this.state.order.items &&
