@@ -5,7 +5,9 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar">
-        <h2 className="navbar__logo">Feast</h2>
+        <Link to="/">
+          <h2 className="navbar__logo">Feast</h2>
+        </Link>
         <ul className="navbar__list">
           <li className="navbar__item">
             <Link className="navbar__link" to="/orders">
