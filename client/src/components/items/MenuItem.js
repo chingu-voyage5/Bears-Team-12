@@ -2,78 +2,39 @@
 // of the application state. The old code is still here and its functionality
 // needs to be retained within the application.
 
+// There is Menu editing functionalit was built into this component
+// showPriceEdit controlled whether or not the price for an item could
+// be edited on the spot to effect future orders. This could be a UI
+// element for an admin dashboard, but doesn't seem to serve a typical
+// order taker in any way. Removed this component for now and will reuse
+// it elsewhere if there is time after MVP is accomplished.
 import React, { Component } from 'react';
-import PriceUpdateForm from './PriceUpdateForm';
 
-// class MenuItem extends Component {
-//   state = { showPriceEdit: false };
+class MenuItem extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-//   onEditButtonClick() {
-//     this.setState({
-//       showPriceEdit: true
-//     });
-//   }
+  addItem() {
+    // take the current items properties and add it to the global order object
+    // using a ADD_ITEM action. The payload should be the item properties.
+  }
 
-//   render() {
-//     const { item, menuState } = this.props;
-//     const itemFullName = `${item.name} (${item.type})`;
-
-//     if (this.state.showPriceEdit) {
-//       return (
-//         <div className="menuItem">
-//           <PriceUpdateForm
-//             item={item}
-//             onCancel={() => this.setState({ showPriceEdit: false })}
-//           />
-//         </div>
-//       );
-//     }
-
-//     return (
-//       <div className="menuItem">
-//         <div>
-//           <br />
-//           <input
-//             type="button"
-//             onClick={() => this.onEditButtonClick()}
-//             value="Edit Price"
-//           />
-//           <label>
-//             <div>{itemFullName}</div>
-//             <div>{item.price}</div>
-
-//             <input
-//               name={itemFullName}
-//               type="number"
-//               onChange={this.props.handleInputChange}
-//               min={0}
-//               value={
-//                 menuState.order[itemFullName]
-//                   ? menuState.order[itemFullName].count
-//                   : 0
-//               }
-//             />
-//           </label>
-
-//           <br />
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-const MenuItem = props => {
-  // const { item, menuState } = this.props;
-  // const itemFullName = `${item.name} (${item.type})`;
-
-  return (
-    <div className="menu__item">
-      <img className="menu__item--img" src="http://via.placeholder.com/250x300" />
-      <h3 className="menu__item--name">Chicken with sauce</h3>
-      <p className="menu__item--price">&euro; 17</p>
-      <button className="menu__item--button">+</button>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="menu__item">
+        <img
+          className="menu__item--img"
+          src="http://via.placeholder.com/250x300"
+        />
+        <h3 className="menu__item--name">{this.props.name}</h3>
+        <p className="menu__item--price">&euro; {this.props.price}</p>
+        <button onClick={this.addItem} className="menu__item--button">
+          +
+        </button>
+      </div>
+    );
+  }
+}
 
 export default MenuItem;
