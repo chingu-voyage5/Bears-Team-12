@@ -10,6 +10,7 @@ import axios from 'axios';
 import MenuItem from './items/MenuItem';
 import OrderOverview from './orders/OrderOverview';
 import Redirect from 'react-router-dom/Redirect';
+import OrderReceipt from './orders/OrderReceipt';
 
 // This Component is named to correspond to the "Menu" link on the
 // navbar. It should render all menu items and the orderOverview component
@@ -102,7 +103,7 @@ class Menu extends Component {
           return (
             <MenuItem
               key={item.name + item.type}
-              item={item.name}
+              name={item.name}
               price={item.price}
               // handleInputChange={this.handleInputChange}
               // menuState={this.state}
@@ -118,7 +119,7 @@ class Menu extends Component {
   // OrderOverview should take up 350px or 35rem
   render() {
     if (this.state.previousOrder._id) {
-      return <Redirect to={ '/orders/' + this.state.previousOrder._id } />
+      return <Redirect to={'/orders/' + this.state.previousOrder._id} />;
     }
 
     return (
@@ -137,7 +138,7 @@ class Menu extends Component {
 }
 
 const mapStateToProps = state => {
-  return { menu: state.MenuReducer };
+  return { menu: state.menu };
 };
 
 export default connect(mapStateToProps)(Menu);
