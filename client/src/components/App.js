@@ -10,6 +10,7 @@ import OrderScanner from './orders/OrderScanner';
 import ItemNew from './items/ItemNew';
 import DrinksMenu from './drinks/DrinksMenu';
 import DrinkForm from './drinks/DrinkForm';
+import Statistics from './Statistics';
 
 class App extends Component {
   render() {
@@ -19,28 +20,23 @@ class App extends Component {
         <Route exact path="/" component={Landing} />
         <div>
           <Route exact path="/scanner" component={OrderScanner} />
-          <Route exact path="/orders" component={Orders} />
+          <Route path="/orders" component={Orders} />
           <Route exact path="/menu" component={Menu} />
           <Route path="/menu/new" component={ItemNew} />
           <Route exact path="/drinks" component={DrinksMenu} />
-          <Route exact path="/drinks/new" component={DrinkForm} />
+          <Route path="/drinks/new" component={DrinkForm} />
+          <Route path="/statistics" component={Statistics} />
         </div>
       </div>
-    )
+    );
 
     return (
-      
-        <BrowserRouter>
-          <Switch>
-            
-              <Route 
-                path="/orders/:id" 
-                component={OrderReceipt} />
-              <Route component={DefaultContainer}/>
-            
-          </Switch>
-        </BrowserRouter>
-      
+      <BrowserRouter>
+        <Switch>
+          <Route path="/orders/:id" component={OrderReceipt} />
+          <Route component={DefaultContainer} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

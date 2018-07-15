@@ -47,7 +47,11 @@ app.post('/api/orders', async (req, res) => {
 
   for (const key in order) {
     if (order[key].count > 0) {
-      items.push({ name: key, count: order[key].count, price: order[key].price });
+      items.push({
+        name: key,
+        count: order[key].count,
+        price: order[key].price
+      });
     }
   }
 
@@ -64,15 +68,25 @@ app.post('/api/orders', async (req, res) => {
   res.send(savedNewOrder);
 });
 
-app.post('/api/orders/:orderId', async (req, res) => {
-  const { newStatus } = req.body;
+app.put('/api/orders/:orderId', async (req, res) => {
+  const { method } = req.body;
   const { orderId } = req.params;
+  let newStatus;
 
-  const updatedOrder = await Item.findByIdAndUpdate(orderId, {
-    status: newStatus
-  });
+  const foundOrder = await Order.findById(orderId);
 
-  res.send(updatedOrder);
+  if (foundOrder.status < 4) {
+    Order.findByIdAndUpdate(
+      orderId,
+      {
+        $inc: { status: 1 }
+      },
+      { new: true },
+      (err, updatedOrder) => {
+        res.send(updatedOrder);
+      }
+    );
+  }
 });
 
 // Item routes
@@ -96,7 +110,7 @@ app.post('/api/items', async (req, res) => {
   res.send(item);
 });
 
-app.post('/api/items/:itemId', async (req, res) => {
+app.put('/api/items/:itemId', async (req, res) => {
   const { newPrice } = req.body;
   const { itemId } = req.params;
 

@@ -17,7 +17,7 @@ class PriceUpdateForm extends Component {
   handleUpdate(event) {
     event.preventDefault();
     axios
-      .post(`/api/items/${this.props.item._id}`, {
+      .put(`/api/items/${this.props.item._id}`, {
         newPrice: this.state.price
       })
       .then(() => {

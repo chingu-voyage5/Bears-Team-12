@@ -13,13 +13,19 @@ class Orders extends Component {
     this.fetchOrders();
   }
 
+  handleProgressUpdate(orderId) {
+    axios
+      .put(`/api/orders/${orderId}`, {
+        method: 'clicked'
+      })
+      .then(res => console.log(res));
+  }
+
   async fetchOrders() {
     const res = await axios.get('/api/orders');
     this.setState({
       orders: res.data
     });
-    console.log('Fetching orders');
-    console.log(this.state);
   }
 
   renderOrders() {
@@ -27,16 +33,20 @@ class Orders extends Component {
       return (
         <div key={order._id}>
           <br />
-          <a href= {"/orders/" + order._id } >Receipt</a> | {order.name} | Notes: {order.notes || 'None'} | Stage: {order.status}{' '}
-          | {order.table} | Time created: {order.created} | Time updated:
-          {order.updated}
-          
+          <a href={'/orders/' + order._id}>Receipt</a> | {order.name} | Notes:{' '}
+          {order.notes || 'None'} | Stage: {order.status} | {order.table} | Time
+          created: {order.created} | Time updated:
+          {order.updated} |{' '}
+          <button onClick={() => this.handleProgressUpdate(order._id)}>
+            Update Progress
+          </button>
           <br />
           <div>
             {order.items.map(item => {
               return (
                 <div key={item[0].name + item[0].count}>
-                  {item[0].name}: {item[0].count} X {item[0].price} = {item[0].count * item[0].price}
+                  {item[0].name}: {item[0].count} X {item[0].price} ={' '}
+                  {item[0].count * item[0].price}
                 </div>
               );
             })}
