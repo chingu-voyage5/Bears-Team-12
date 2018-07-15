@@ -22,7 +22,7 @@ class DrinksMenu extends Component {
   renderItems() {
     return this.state.drinks.map(item => {
       return (
-        <div key={item.name}>
+        <div key={item.name + item.price}>
           {item.name} {item.price}
         </div>
       );
