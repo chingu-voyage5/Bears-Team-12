@@ -59,8 +59,8 @@ app.post('/api/orders', async (req, res) => {
     name,
     items,
     notes: notes || null,
-    created: Date.now(),
-    updated: Date.now()
+    created: new Date(),
+    updated: new Date()
   });
 
   const savedNewOrder = await newOrder.save();
@@ -79,7 +79,8 @@ app.put('/api/orders/:orderId', async (req, res) => {
     Order.findByIdAndUpdate(
       orderId,
       {
-        $inc: { status: 1 }
+        $inc: { status: 1 },
+        updated: new Date()
       },
       { new: true },
       (err, updatedOrder) => {
@@ -136,6 +137,56 @@ app.post('/api/drinks', async (req, res) => {
 
   const newDrink = await drink.save();
   res.send(newDrink);
+});
+
+// Statistics Routes
+app.get('/api/stats', (req, res) => {
+  const stats = {};
+
+  Order.find({}).then(orders => {
+    orders.forEach(order => {
+      const weekday = new Array(7);
+      weekday[0] = 'Monday';
+      weekday[1] = 'Tuesday';
+      weekday[2] = 'Wednesday';
+      weekday[3] = 'Thursday';
+      weekday[4] = 'Friday';
+      weekday[5] = 'Saturday';
+      weekday[6] = 'Sunday';
+
+      const date = new Date(order.created);
+      const day = weekday[date.getDay()];
+
+      if (!stats[day]) {
+        stats[day] = {};
+      }
+
+      order.items.forEach(item => {
+        if (stats[day][item[0].name]) {
+          stats[day][item[0].name].count += item[0].count;
+        } else {
+          stats[day][item[0].name] = {
+            name: item[0].name,
+            count: 1,
+            price: item[0].price
+          };
+        }
+      });
+
+      const itemKeys = Object.keys(stats[day]);
+      stats[day].total = 0;
+
+      itemKeys.forEach(itemKey => {
+        console.log(itemKey);
+        const itemTotal = stats[day][itemKey].price * stats[day][itemKey].count;
+        if (itemKey !== 'total') {
+          stats[day].total += itemTotal;
+        }
+      });
+    });
+
+    res.send(stats);
+  });
 });
 
 // PORT
