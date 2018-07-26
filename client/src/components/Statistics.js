@@ -5,32 +5,63 @@ class Statistics extends Component {
   constructor() {
     super();
     this.state = {
-      object: {}
+      stats: {}
     };
   }
+
   componentDidMount() {
-    this.fetchOrders();
+    this.fetchStats();
   }
 
-  async fetchOrders() {
-    const res = await axios.get('/api/orders');
-    const object = {};
-
-    res.data.forEach(order => {
-      order.items.forEach(item => {
-        if (object[item.name]) {
-          object[item.name]++;
-        } else {
-          object[item.name] = 1;
+  fetchStats() {
+    axios.get('/api/stats').then(res => {
+      this.setState(
+        {
+          stats: res.data
+        },
+        () => {
+          console.log(this.state.stats);
         }
-      });
+      );
     });
+  }
 
-    return object;
+  renderStats() {
+    const stats = this.state.stats;
+    const dayKeys = Object.keys(stats);
+
+    return dayKeys.map(dayKey => {
+      const itemKeys = Object.keys(stats[dayKey]);
+
+      const items = itemKeys.map(itemKey => {
+        if (itemKey === 'total') return;
+
+        const item = stats[dayKey][itemKey];
+        return (
+          <div key={itemKey}>
+            <div>{item.name}</div>
+            <div>Count: {item.count}</div>
+          </div>
+        );
+      });
+
+      return (
+        <div key={dayKey}>
+          <div>{dayKey}:</div>
+          <br />
+          {items}
+          <br />
+          <div>
+            Total for {dayKey}: ${stats[dayKey].total}
+          </div>
+          <br />
+        </div>
+      );
+    });
   }
 
   render() {
-    return <div>sTATS</div>;
+    return <div>{this.renderStats()}</div>;
   }
 }
 
