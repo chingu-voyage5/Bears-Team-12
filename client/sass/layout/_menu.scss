@@ -4,13 +4,13 @@
 
 .mainMenu {
   display: flex;
+  justify-content: center;
 }
 
 .foodMenu {
   display: grid;
-  width: 120rem;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, min-content);
+  grid-template-columns: repeat(3, min-content);
   grid-gap: 3rem;
   margin: 3rem 0 0 3rem;
 }

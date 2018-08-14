@@ -28,7 +28,7 @@ class MenuItem extends Component {
           src="http://via.placeholder.com/250x300"
         />
         <h3 className="menu__item--name">{this.props.name}</h3>
-        <p className="menu__item--price">&euro; {this.props.price}</p>
+        {/* <p className="menu__item--price">&euro; {this.props.price}</p> */}
         <button onClick={this.addItem} className="menu__item--button">
           +
         </button>

@@ -138,7 +138,7 @@ class Menu extends Component {
 }
 
 const mapStateToProps = state => {
-  return { menu: state.menu };
+  return { menu: state.Menu };
 };
 
 export default connect(mapStateToProps)(Menu);
